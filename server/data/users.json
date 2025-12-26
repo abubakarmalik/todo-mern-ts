@@ -1,0 +1,26 @@
+[
+  {
+    "id": "168c97e9-ed44-4609-896f-bbfc1dee8f57",
+    "name": "Abubakar",
+    "email": "abubakar@asapp.com",
+    "age": 25,
+    "createdAt": "2025-12-26T10:44:57.391Z",
+    "updatedAt": "2025-12-26T10:44:57.391Z"
+  },
+  {
+    "id": "a61e249e-a6d6-4e30-8c2b-af2ca46567c4",
+    "name": "Nouman",
+    "email": "nouman@asapp.com",
+    "age": 28,
+    "createdAt": "2025-12-26T10:46:23.208Z",
+    "updatedAt": "2025-12-26T10:46:23.208Z"
+  },
+  {
+    "id": "d477e42e-8724-4395-ab6d-dcb789d76a1a",
+    "name": "Ali",
+    "email": "ali@asapp.com",
+    "age": 30,
+    "createdAt": "2025-12-26T10:49:12.166Z",
+    "updatedAt": "2025-12-26T10:49:12.166Z"
+  }
+]
