@@ -19,37 +19,35 @@ export default function Topbar() {
   };
 
   return (
-    <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="fixed">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-            >
-              <DashboardIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, fontSize: { xs: 16, sm: 18, md: 20, lg: 22 } }}
-            >
-              Todos App
-            </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              startIcon={<PersonAddAltIcon />}
-              sx={{ fontSize: { xs: 12, sm: 14 }, px: { xs: 1.5, sm: 2.5 } }}
-              onClick={handleClickOpen}
-            >
-              Add User
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+          >
+            <DashboardIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, fontSize: { xs: 16, sm: 18, md: 20, lg: 22 } }}
+          >
+            Todos App
+          </Typography>
+          <Button
+            variant="contained"
+            color="secondary"
+            startIcon={<PersonAddAltIcon />}
+            sx={{ fontSize: { xs: 12, sm: 14 }, px: { xs: 1.5, sm: 2.5 } }}
+            onClick={handleClickOpen}
+          >
+            Add User
+          </Button>
+        </Toolbar>
+      </AppBar>
       <DynamicModel
         open={open}
         isForm={true}
@@ -57,6 +55,6 @@ export default function Topbar() {
         title="Add User"
         onConfirm={handleClose}
       />
-    </>
+    </Box>
   );
 }

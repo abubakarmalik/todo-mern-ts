@@ -14,7 +14,6 @@ export const getAllUsers = async (
 ): Promise<void> => {
   try {
     const users = await getAllUsersService();
-    console.log(users);
     res.status(200).json({
       success: true,
       message: 'Data fetched successfully',

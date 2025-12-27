@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import AddUserForm from './AddUserForm';
+import type { Todo } from '../types/todo.types';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -24,11 +25,13 @@ interface DynamicModelPropsType {
   title: string;
   onClose: () => void;
   onConfirm: () => void;
+  isEdit?: Todo;
 }
 
 export default function DynamicModel({
   open,
   title,
+  isEdit,
   onClose,
   onConfirm,
   isForm = false,
@@ -56,10 +59,11 @@ export default function DynamicModel({
           <CloseIcon />
         </IconButton>
         <DialogContent>
-          {isForm && <AddUserForm />}
+          {isForm && <AddUserForm onClose={onClose} isEdit={isEdit} />}
           {!isForm && (
             <Typography gutterBottom>
-              This action not be undo item will delete permanent
+              This action cannot be undone. This item will be permanently
+              deleted.
             </Typography>
           )}
         </DialogContent>
@@ -68,7 +72,7 @@ export default function DynamicModel({
             <Button
               autoFocus
               variant="outlined"
-              onClick={onConfirm}
+              onClick={onClose}
               sx={{ px: { xs: 1.5, sm: 2.5 } }}
             >
               cancel

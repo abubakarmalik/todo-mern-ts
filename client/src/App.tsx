@@ -3,12 +3,15 @@ import { router } from './routes/AppRoutes';
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './theme';
+import { TodosProvider } from './context/todosContext';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Toaster />
-      <RouterProvider router={router} />
+      <TodosProvider>
+        <RouterProvider router={router} />
+      </TodosProvider>
     </ThemeProvider>
   );
 }

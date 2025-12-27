@@ -20,11 +20,10 @@ const MainLayout = () => {
         sx={{
           flexGrow: 1,
           pt: '64px',
-          pb: 2,
           minHeight: 'calc(100vh - 64px)',
         }}
       >
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
           <Outlet />
         </Container>
       </Box>

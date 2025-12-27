@@ -1,42 +1,34 @@
 import { http } from '../api/http';
+import { unwrap } from '../api/unwrap';
+import type { ApiResponse } from '../types/api.type';
 import type { Todo, CreateTodoDto, UpdateTodoDto } from '../types/todo.types';
 
 export const todoService = {
-  getAllTodos: async (): Promise<Todo[]> => {
-    const { data } = await http.get('/users');
-    if (!data.success) {
-      throw new Error(data.message);
-    }
-    return data.data;
-  },
-  getTodoById: async (id: string): Promise<Todo> => {
-    const { data } = await http.get(`/users/${id}`);
-    if (!data.success) {
-      throw new Error(data.message);
-    }
-    return data.data;
-  },
-  create: async (payload: CreateTodoDto): Promise<Todo> => {
-    const { data } = await http.post('/users', payload);
-    if (!data.success) {
-      throw new Error(data.message);
-    }
-    return data;
+  getAllTodos: async () => {
+    const { data } = await http.get<ApiResponse<Todo[]>>('/users');
+    return unwrap(data);
   },
 
-  update: async (id: string, payload: UpdateTodoDto): Promise<Todo> => {
-    const { data } = await http.patch(`/users/${id}`, payload);
-    if (!data.success) {
-      throw new Error(data.message);
-    }
-    return data;
+  getTodoById: async (id: string) => {
+    const { data } = await http.get<ApiResponse<Todo>>(`/users/${id}`);
+    return unwrap(data);
   },
 
-  remove: async (id: string): Promise<void> => {
-    const { data } = await http.delete(`/users/${id}`);
-    if (!data.success) {
-      throw new Error(data.message);
-    }
-    return data;
+  create: async (payload: CreateTodoDto) => {
+    const { data } = await http.post<ApiResponse<Todo>>('/users', payload);
+    return unwrap(data);
+  },
+
+  update: async (id: string, payload: UpdateTodoDto) => {
+    const { data } = await http.patch<ApiResponse<Todo>>(
+      `/users/${id}`,
+      payload,
+    );
+    return unwrap(data);
+  },
+
+  remove: async (id: string) => {
+    const { data } = await http.delete<ApiResponse<null>>(`/users/${id}`);
+    return unwrap(data);
   },
 };

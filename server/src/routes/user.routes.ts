@@ -19,7 +19,7 @@ router.get('/:id', getUserById);
 router.post('/', createUser);
 
 // Update user
-router.put('/:id', updateUser);
+router.patch('/:id', updateUser);
 
 // Delete user
 router.delete('/:id', deleteUser);
