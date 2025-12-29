@@ -37,23 +37,15 @@
     "email": "ali@test",
     "age": 11,
     "createdAt": "2025-12-29T09:34:55.608Z",
-    "updatedAt": "2025-12-29T09:34:55.608Z"
+    "updatedAt": "2025-12-29T12:43:09.275Z"
   },
   {
     "id": "4c4180a2-46b9-4dfe-a546-4c5192f5668e",
     "name": "Coffee updated",
     "email": "name@test.com",
-    "age": 455454,
+    "age": 11,
     "createdAt": "2025-12-29T09:35:58.911Z",
-    "updatedAt": "2025-12-29T09:35:58.911Z"
-  },
-  {
-    "id": "3126144a-9929-4cde-a646-37f00ea45f0f",
-    "name": "Abubakar Sadeeq bjhhh Abubakar Sadeeq Abubakar Abubakar Sadeeq Abubakar Sadeeq bjhhh bjhhh",
-    "email": "name@test.com",
-    "age": 546,
-    "createdAt": "2025-12-29T09:36:58.904Z",
-    "updatedAt": "2025-12-29T10:58:02.094Z"
+    "updatedAt": "2025-12-29T12:11:52.499Z"
   },
   {
     "id": "5ed6b66e-6c46-481b-95c6-87a81171cb9b",
@@ -64,11 +56,19 @@
     "updatedAt": "2025-12-29T10:57:27.783Z"
   },
   {
-    "id": "6c1139f3-a8a2-45ef-a8a4-6d9fab833215",
-    "name": "Abubakar Sadeeq Abubakar ",
-    "email": "abubakar@test.com",
-    "age": 11,
-    "createdAt": "2025-12-29T11:44:46.067Z",
-    "updatedAt": "2025-12-29T11:45:19.824Z"
+    "id": "62b5fea0-67d9-4c45-9cee-bb4208244231",
+    "name": "Coffee ",
+    "email": "name@test.com",
+    "age": 55,
+    "createdAt": "2025-12-29T12:10:48.099Z",
+    "updatedAt": "2025-12-29T12:43:55.127Z"
+  },
+  {
+    "id": "2920617e-0248-421c-bacc-bd0ac9722d0c",
+    "name": "Coffeeupdated",
+    "email": "name@test.com",
+    "age": 77,
+    "createdAt": "2025-12-29T12:39:14.711Z",
+    "updatedAt": "2025-12-29T12:39:29.533Z"
   }
 ]

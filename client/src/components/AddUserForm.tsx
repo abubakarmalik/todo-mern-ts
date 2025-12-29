@@ -33,11 +33,11 @@ const AddUserForm = ({ onClose, isEdit }: AddUserFormProps) => {
           };
 
           if (isEdit) {
-            await updateTodo(isEdit.id, payload);
-            toast.success('User Updated');
+            const { message } = await updateTodo(isEdit.id, payload);
+            toast.success(message);
           } else {
-            await createTodo(payload);
-            toast.success('User added');
+            const { message } = await createTodo(payload);
+            toast.success(message);
           }
           resetForm();
           onClose();
@@ -119,8 +119,14 @@ const AddUserForm = ({ onClose, isEdit }: AddUserFormProps) => {
             variant="contained"
             color="primary"
             disabled={isSubmitting}
+            sx={{
+              '&.Mui-disabled': {
+                backgroundColor: 'secondary.light',
+                color: 'text.disabled',
+              },
+            }}
           >
-            {isEdit ? 'Update User' : 'Add User'}
+            {isSubmitting ? 'Loading...' : isEdit ? 'Update User' : 'Add User'}
           </Button>
         </Box>
       )}
