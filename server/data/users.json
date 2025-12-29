@@ -27,9 +27,9 @@
     "id": "8e0ca24f-9627-4827-8628-e630d2611bbc",
     "name": "Abubakar Sadeeq",
     "email": "name@test.com",
-    "age": 2.3444556454454146e+42,
+    "age": 22,
     "createdAt": "2025-12-29T09:33:54.233Z",
-    "updatedAt": "2025-12-29T09:33:54.233Z"
+    "updatedAt": "2025-12-29T10:57:54.401Z"
   },
   {
     "id": "1165b8f9-d777-4b02-b342-455713218549",
@@ -53,6 +53,22 @@
     "email": "name@test.com",
     "age": 546,
     "createdAt": "2025-12-29T09:36:58.904Z",
-    "updatedAt": "2025-12-29T09:36:58.904Z"
+    "updatedAt": "2025-12-29T10:58:02.094Z"
+  },
+  {
+    "id": "5ed6b66e-6c46-481b-95c6-87a81171cb9b",
+    "name": "ali",
+    "email": "abubakar@m",
+    "age": 22,
+    "createdAt": "2025-12-29T10:57:27.783Z",
+    "updatedAt": "2025-12-29T10:57:27.783Z"
+  },
+  {
+    "id": "6c1139f3-a8a2-45ef-a8a4-6d9fab833215",
+    "name": "Abubakar Sadeeq Abubakar ",
+    "email": "abubakar@test.com",
+    "age": 11,
+    "createdAt": "2025-12-29T11:44:46.067Z",
+    "updatedAt": "2025-12-29T11:45:19.824Z"
   }
 ]
