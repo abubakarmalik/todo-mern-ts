@@ -26,6 +26,7 @@ interface DynamicModelPropsType {
   onClose: () => void;
   onConfirm: () => void;
   isEdit?: Todo;
+  isLoading?: boolean;
 }
 
 export default function DynamicModel({
@@ -34,6 +35,7 @@ export default function DynamicModel({
   isEdit,
   onClose,
   onConfirm,
+  isLoading,
   isForm = false,
 }: DynamicModelPropsType) {
   return (
@@ -81,9 +83,16 @@ export default function DynamicModel({
               autoFocus
               variant="contained"
               onClick={onConfirm}
-              sx={{ px: { xs: 1.5, sm: 2.5 } }}
+              sx={{
+                px: { xs: 1.5, sm: 2.5 },
+                '&.Mui-disabled': {
+                  backgroundColor: 'secondary.light',
+                  color: 'text.disabled',
+                },
+              }}
+              disabled={isLoading}
             >
-              Confirm
+              {isLoading ? 'Loading...' : 'Confirm'}
             </Button>
           </DialogActions>
         )}

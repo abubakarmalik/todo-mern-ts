@@ -44,8 +44,8 @@ const TableComponent = ({ todos, isLoading }: TableComponentPropsTypes) => {
   const handleConfirmDelete = async () => {
     if (!selectedId) return;
     try {
-      await deleteTodo(selectedId);
-      toast.success('User deleted');
+      const { message } = await deleteTodo(selectedId);
+      toast.success(message);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : 'Failed to delete');
     } finally {
@@ -144,6 +144,7 @@ const TableComponent = ({ todos, isLoading }: TableComponentPropsTypes) => {
       <DynamicModel
         title="Are you sure?"
         isForm={false}
+        isLoading={isLoading || undefined}
         open={open}
         onClose={() => {
           setSelectedId(null);
