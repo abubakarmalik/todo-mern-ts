@@ -1,5 +1,6 @@
 # Dependency directory
 /server/node_modules
+/server/data
 /client/node_modules
 
 # Log files

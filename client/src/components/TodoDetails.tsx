@@ -37,29 +37,60 @@ export default function TodoDetails() {
   if (!todo) return <Box>No user found</Box>;
 
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card
+      sx={{
+        display: 'flex',
+        maxWidth: { xs: 250, sm: 500 },
+      }}
+    >
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
+          <CardMedia
+            component="img"
+            sx={{
+              width: { xs: 150 },
+              display: { xs: 'block', sm: 'none' },
+            }}
+            image={user}
+            alt="user"
+          />
+          <Typography
+            component="div"
+            variant="h5"
+            sx={{
+              fontSize: { xs: '16px', sm: '18px', md: '20px', lg: '22px' },
+            }}
+          >
             {todo?.name}
           </Typography>
           <Typography
             variant="subtitle1"
             component="div"
-            sx={{ color: 'text.secondary' }}
+            sx={{
+              color: 'text.secondary',
+              fontSize: { xs: '10px', sm: '12px', md: '14px', lg: '16px' },
+            }}
           >
             {todo?.email}
           </Typography>
           <Typography
             variant="subtitle1"
             component="div"
-            sx={{ color: 'text.secondary' }}
+            sx={{
+              color: 'text.secondary',
+              fontSize: { xs: '10px', sm: '12px', md: '14px', lg: '16px' },
+            }}
           >
             Age: {todo?.age}
           </Typography>
         </CardContent>
       </Box>
-      <CardMedia component="img" sx={{ width: 151 }} image={user} alt="user" />
+      <CardMedia
+        component="img"
+        sx={{ width: 151, display: { xs: 'none', sm: 'block' } }}
+        image={user}
+        alt="user"
+      />
     </Card>
   );
 }

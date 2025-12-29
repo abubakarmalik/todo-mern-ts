@@ -8,6 +8,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { useState } from 'react';
 import DynamicModel from './DynamicModel';
+import { Link } from 'react-router-dom';
 
 export default function Topbar() {
   const [open, setOpen] = useState<boolean>(false);
@@ -27,16 +28,25 @@ export default function Topbar() {
             edge="start"
             color="inherit"
             aria-label="menu"
+            component={Link}
+            to="/users"
           >
             <DashboardIcon />
           </IconButton>
           <Typography
             variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, fontSize: { xs: 16, sm: 18, md: 20, lg: 22 } }}
+            component={Link}
+            to="/users"
+            sx={{
+              flexGrow: 1,
+              fontSize: { xs: 16, sm: 18, md: 20, lg: 22 },
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
           >
             Todos App
           </Typography>
+
           <Button
             variant="contained"
             color="secondary"
