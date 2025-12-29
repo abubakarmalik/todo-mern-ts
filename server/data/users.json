@@ -19,9 +19,9 @@
     "id": "f4f04d3f-43f5-497c-9250-9bf7dd8c0cbb",
     "name": "Abubakar",
     "email": "demo@minimals.cc",
-    "age": -35,
+    "age": 35,
     "createdAt": "2025-12-29T09:33:07.458Z",
-    "updatedAt": "2025-12-29T09:33:07.458Z"
+    "updatedAt": "2025-12-29T12:52:16.197Z"
   },
   {
     "id": "8e0ca24f-9627-4827-8628-e630d2611bbc",
@@ -32,30 +32,6 @@
     "updatedAt": "2025-12-29T10:57:54.401Z"
   },
   {
-    "id": "1165b8f9-d777-4b02-b342-455713218549",
-    "name": "Coffee updated",
-    "email": "ali@test",
-    "age": 11,
-    "createdAt": "2025-12-29T09:34:55.608Z",
-    "updatedAt": "2025-12-29T12:43:09.275Z"
-  },
-  {
-    "id": "4c4180a2-46b9-4dfe-a546-4c5192f5668e",
-    "name": "Coffee updated",
-    "email": "name@test.com",
-    "age": 11,
-    "createdAt": "2025-12-29T09:35:58.911Z",
-    "updatedAt": "2025-12-29T12:11:52.499Z"
-  },
-  {
-    "id": "5ed6b66e-6c46-481b-95c6-87a81171cb9b",
-    "name": "ali",
-    "email": "abubakar@m",
-    "age": 22,
-    "createdAt": "2025-12-29T10:57:27.783Z",
-    "updatedAt": "2025-12-29T10:57:27.783Z"
-  },
-  {
     "id": "62b5fea0-67d9-4c45-9cee-bb4208244231",
     "name": "Coffee ",
     "email": "name@test.com",
@@ -64,11 +40,131 @@
     "updatedAt": "2025-12-29T12:43:55.127Z"
   },
   {
-    "id": "2920617e-0248-421c-bacc-bd0ac9722d0c",
-    "name": "Coffeeupdated",
+    "id": "aaba8c47-aee9-465b-8eec-e2def6dfd67d",
+    "name": "Coffee being updated",
+    "email": "name@test.com",
+    "age": 44,
+    "createdAt": "2025-12-29T13:09:47.294Z",
+    "updatedAt": "2025-12-29T13:09:47.294Z"
+  },
+  {
+    "id": "1b5b023d-24f2-4c58-8c2b-1e4f21b7d06c",
+    "name": "Coffee updated",
+    "email": "abubakar@test.com",
+    "age": 22,
+    "createdAt": "2025-12-29T13:09:55.244Z",
+    "updatedAt": "2025-12-29T13:09:55.244Z"
+  },
+  {
+    "id": "41caa0c1-caa3-4698-a1a9-3f1a0564f3af",
+    "name": "Coffee being updated",
+    "email": "name@test.com",
+    "age": 33,
+    "createdAt": "2025-12-29T13:10:04.381Z",
+    "updatedAt": "2025-12-29T13:10:04.381Z"
+  },
+  {
+    "id": "aeacf998-f88b-4d51-ae74-2d5a7303a703",
+    "name": "Coffee being updated",
+    "email": "ali@test",
+    "age": 22,
+    "createdAt": "2025-12-29T13:10:16.884Z",
+    "updatedAt": "2025-12-29T13:10:16.884Z"
+  },
+  {
+    "id": "f74f917f-fb9c-4269-8ccb-b83e0d9ef5b9",
+    "name": "Abubakar Sadeeq Abubakar ",
+    "email": "abubakar@test.com",
+    "age": 33,
+    "createdAt": "2025-12-29T13:10:27.068Z",
+    "updatedAt": "2025-12-29T13:10:53.312Z"
+  },
+  {
+    "id": "3402ea79-87fd-4b51-92bd-8d793849dcac",
+    "name": "Sadeeq Abubakar Abubakar Sadee",
+    "email": "ali@test",
+    "age": 33,
+    "createdAt": "2025-12-29T13:11:31.381Z",
+    "updatedAt": "2025-12-29T13:11:31.381Z"
+  },
+  {
+    "id": "ba164b6c-63e8-4274-9a83-50d6bef78fb8",
+    "name": "Coffee updated",
+    "email": "ali@test",
+    "age": 77,
+    "createdAt": "2025-12-29T13:11:40.170Z",
+    "updatedAt": "2025-12-29T13:11:40.170Z"
+  },
+  {
+    "id": "709692e0-e9eb-4918-ae83-6e610c914868",
+    "name": "Coffee being updated",
+    "email": "abubakar@test.com",
+    "age": 77,
+    "createdAt": "2025-12-29T13:11:47.806Z",
+    "updatedAt": "2025-12-29T13:11:47.806Z"
+  },
+  {
+    "id": "a6d3bc72-dcb0-4b6e-99d9-c139867a7ab3",
+    "name": "name",
+    "email": "ali@test",
+    "age": 77,
+    "createdAt": "2025-12-29T13:12:02.098Z",
+    "updatedAt": "2025-12-29T13:12:02.098Z"
+  },
+  {
+    "id": "7657cd07-245a-4872-95e4-c61374f590b2",
+    "name": "Coffee being updated",
     "email": "name@test.com",
     "age": 77,
-    "createdAt": "2025-12-29T12:39:14.711Z",
-    "updatedAt": "2025-12-29T12:39:29.533Z"
+    "createdAt": "2025-12-29T13:12:21.878Z",
+    "updatedAt": "2025-12-29T13:12:21.878Z"
+  },
+  {
+    "id": "ae6c71bb-92bd-4a9d-b7bd-4c8f2e35714e",
+    "name": "pppp",
+    "email": "name@test.com",
+    "age": 22,
+    "createdAt": "2025-12-29T13:12:34.801Z",
+    "updatedAt": "2025-12-29T13:13:06.607Z"
+  },
+  {
+    "id": "469b695b-7dc5-480f-8156-e3689d158aaa",
+    "name": "Coffeeupdated",
+    "email": "name@test.com",
+    "age": 14,
+    "createdAt": "2025-12-29T13:13:20.320Z",
+    "updatedAt": "2025-12-29T13:13:20.320Z"
+  },
+  {
+    "id": "072e0cdc-7274-4628-8642-7aa9e46ab232",
+    "name": "Abubakar Sadeeq Abubakar ",
+    "email": "ali@test",
+    "age": 11,
+    "createdAt": "2025-12-29T13:13:31.874Z",
+    "updatedAt": "2025-12-29T13:13:31.874Z"
+  },
+  {
+    "id": "638d8ead-e3c8-4db5-b426-9aa028c1129c",
+    "name": "name",
+    "email": "ali@test",
+    "age": 16,
+    "createdAt": "2025-12-29T13:13:44.621Z",
+    "updatedAt": "2025-12-29T13:13:44.621Z"
+  },
+  {
+    "id": "d2c2eb60-8e31-4970-a0ef-a1e48c258305",
+    "name": "name",
+    "email": "demo@minimals.cc",
+    "age": 52,
+    "createdAt": "2025-12-29T13:13:50.460Z",
+    "updatedAt": "2025-12-29T13:13:50.460Z"
+  },
+  {
+    "id": "741c6d67-1ee2-4f5e-b41e-539b5417da0a",
+    "name": "Coffee updated",
+    "email": "ali@test",
+    "age": 52,
+    "createdAt": "2025-12-29T13:13:59.925Z",
+    "updatedAt": "2025-12-29T13:13:59.925Z"
   }
 ]

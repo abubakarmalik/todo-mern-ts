@@ -1,12 +1,15 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { Todo, CreateTodoDto, UpdateTodoDto } from '../types/todo.types';
-import type { ApiResult } from '../types/api.type';
+import type { ApiResult, Paginated } from '../types/api.type';
 import { todoService } from '../services/todos.service';
 
 interface TodosContextValue {
   todos: Todo[];
   isLoading: boolean;
-  fetchTodos: () => Promise<ApiResult<Todo[]>>;
+  fetchTodos: (
+    page?: number,
+    limit?: number,
+  ) => Promise<ApiResult<Paginated<Todo> | Todo[]>>;
   createTodo: (payload: CreateTodoDto) => Promise<ApiResult<Todo>>;
   updateTodo: (id: string, payload: UpdateTodoDto) => Promise<ApiResult<Todo>>;
   deleteTodo: (id: string) => Promise<ApiResult<null>>;
@@ -20,11 +23,16 @@ export const TodosProvider: React.FC<React.PropsWithChildren<unknown>> = ({
   const [todos, setTodos] = useState<Todo[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchTodos = async () => {
+  const fetchTodos = async (page?: number, limit?: number) => {
     setIsLoading(true);
     try {
-      const res = await todoService.getAllTodos();
-      setTodos(res.data);
+      const res = await todoService.getAllTodos(page, limit);
+      if ((res.data as any).items) {
+        setTodos((res.data as any).items);
+      } else {
+        setTodos(res.data as Todo[]);
+      }
+
       return res;
     } finally {
       setIsLoading(false);
@@ -65,7 +73,7 @@ export const TodosProvider: React.FC<React.PropsWithChildren<unknown>> = ({
   };
 
   useEffect(() => {
-    void fetchTodos();
+    fetchTodos(1, 5);
   }, []);
 
   return (
