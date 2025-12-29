@@ -1,11 +1,14 @@
 import { http } from '../api/http';
 import { unwrap } from '../api/unwrap';
-import type { ApiResponse } from '../types/api.type';
+import type { ApiResponse, Paginated } from '../types/api.type';
 import type { Todo, CreateTodoDto, UpdateTodoDto } from '../types/todo.types';
 
 export const todoService = {
-  getAllTodos: async () => {
-    const { data } = await http.get<ApiResponse<Todo[]>>('/users');
+  getAllTodos: async (page?: number, limit?: number) => {
+    const { data } = await http.get<ApiResponse<Paginated<Todo> | Todo[]>>(
+      '/users',
+      { params: { page, limit } },
+    );
     return unwrap(data);
   },
 

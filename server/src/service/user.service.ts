@@ -4,9 +4,39 @@ import { readFileData, writeFileData } from '../utils/fileHandler';
 
 const FILE_NAME = 'users.json';
 
-/** Get all users */
-export const getAllUsers = async (): Promise<User[]> => {
-  return readFileData<User>(FILE_NAME);
+export type PaginatedResult<T> = {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+};
+
+export const getAllUsers = async (
+  page?: number,
+  limit?: number,
+): Promise<User[] | PaginatedResult<User>> => {
+  const users = await readFileData<User>(FILE_NAME);
+
+  if (!page || !limit) return users;
+
+  const total = users.length;
+  const validLimit = Math.max(1, limit);
+  const validPage = Math.max(1, page);
+  const totalPages = Math.ceil(total / validLimit) || 1;
+
+  const start = (validPage - 1) * validLimit;
+  const end = start + validLimit;
+
+  const items = users.slice(start, end);
+
+  return {
+    items,
+    total,
+    page: validPage,
+    limit: validLimit,
+    totalPages,
+  };
 };
 
 /** Get user by ID */

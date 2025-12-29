@@ -9,11 +9,15 @@ import {
 
 /** Get all users */
 export const getAllUsers = async (
-  _req: Request,
+  req: Request,
   res: Response,
 ): Promise<void> => {
   try {
-    const users = await getAllUsersService();
+    const page = req.query.page ? Number(req.query.page) : undefined;
+    const limit = req.query.limit ? Number(req.query.limit) : undefined;
+
+    const users = await getAllUsersService(page, limit);
+
     res.status(200).json({
       success: true,
       message: 'Data fetched successfully',
