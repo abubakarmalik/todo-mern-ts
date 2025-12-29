@@ -166,5 +166,13 @@
     "age": 52,
     "createdAt": "2025-12-29T13:13:59.925Z",
     "updatedAt": "2025-12-29T13:13:59.925Z"
+  },
+  {
+    "id": "a07197ac-ac50-438b-b453-2ae4e55279dc",
+    "name": "Abubakar Sadeeq Abubakar ",
+    "email": "name@test.com",
+    "age": 0.7,
+    "createdAt": "2025-12-29T14:25:44.066Z",
+    "updatedAt": "2025-12-29T14:25:44.066Z"
   }
 ]
