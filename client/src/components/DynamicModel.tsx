@@ -86,8 +86,8 @@ export default function DynamicModel({
               sx={{
                 px: { xs: 1.5, sm: 2.5 },
                 '&.Mui-disabled': {
-                  backgroundColor: 'secondary.light',
-                  color: 'text.disabled',
+                  backgroundColor: 'primary.light',
+                  color: 'primary.contrastText',
                 },
               }}
               disabled={isLoading}

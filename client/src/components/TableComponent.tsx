@@ -16,8 +16,7 @@ import toast from 'react-hot-toast';
 
 const TableComponent = () => {
   const navigate = useNavigate();
-  const { fetchTodos, todos, isLoading, total } = useTodo();
-  const { deleteTodo } = useTodo();
+  const { fetchTodos, deleteTodo, todos, isLoading, total } = useTodo();
 
   const [pagination, setPagination] = useState<MRT_PaginationState>({
     pageIndex: 0,

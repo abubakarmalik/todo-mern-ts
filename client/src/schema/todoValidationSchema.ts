@@ -14,6 +14,6 @@ export const todoValidationSchema = Yup.object({
     .required('Age is required')
     .typeError('Age must be a number')
     .positive('Age must be greater than 0')
-    .integer('Age must be a whole number')
+    .integer('Age in points not allowed')
     .max(100, 'Age must be at most 100'),
 });

@@ -121,8 +121,8 @@ const AddUserForm = ({ onClose, isEdit }: AddUserFormProps) => {
             disabled={isSubmitting}
             sx={{
               '&.Mui-disabled': {
-                backgroundColor: 'secondary.light',
-                color: 'text.disabled',
+                backgroundColor: 'primary.light',
+                color: 'primary.contrastText',
               },
             }}
           >
