@@ -2,9 +2,11 @@ import * as Yup from 'yup';
 
 export const todoValidationSchema = Yup.object({
   name: Yup.string()
+    .trim()
     .required('Name is required')
     .max(30, 'Name must be at most 30 characters'),
   email: Yup.string()
+    .trim()
     .email('Invalid email')
     .required('Email is required')
     .max(30, 'Email must be at most 30 characters'),
@@ -12,5 +14,6 @@ export const todoValidationSchema = Yup.object({
     .required('Age is required')
     .typeError('Age must be a number')
     .positive('Age must be greater than 0')
+    .integer('Age must be a whole number')
     .max(100, 'Age must be at most 100'),
 });
