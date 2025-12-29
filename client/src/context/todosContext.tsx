@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import type { Todo, CreateTodoDto, UpdateTodoDto } from '../types/todo.types';
 import type { ApiResult, Paginated } from '../types/api.type';
 import { todoService } from '../services/todos.service';
 
 interface TodosContextValue {
+  total: number;
   todos: Todo[];
   isLoading: boolean;
   fetchTodos: (
@@ -21,6 +22,7 @@ export const TodosProvider: React.FC<React.PropsWithChildren<unknown>> = ({
   children,
 }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [total, setTotal] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const fetchTodos = async (page?: number, limit?: number) => {
@@ -29,6 +31,7 @@ export const TodosProvider: React.FC<React.PropsWithChildren<unknown>> = ({
       const res = await todoService.getAllTodos(page, limit);
       if ((res.data as any).items) {
         setTodos((res.data as any).items);
+        setTotal((res.data as any).total);
       } else {
         setTodos(res.data as Todo[]);
       }
@@ -72,15 +75,12 @@ export const TodosProvider: React.FC<React.PropsWithChildren<unknown>> = ({
     }
   };
 
-  useEffect(() => {
-    fetchTodos(1, 5);
-  }, []);
-
   return (
     <TodosContext.Provider
       value={{
         todos,
         isLoading,
+        total,
         fetchTodos,
         createTodo,
         updateTodo,
