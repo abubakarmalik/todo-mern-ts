@@ -1,5 +1,9 @@
-import { useMemo, useState } from 'react';
-import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
+import { useEffect, useMemo, useState } from 'react';
+import {
+  MaterialReactTable,
+  type MRT_ColumnDef,
+  type MRT_PaginationState,
+} from 'material-react-table';
 import { Box, IconButton, Tooltip } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,19 +14,23 @@ import DynamicModel from './DynamicModel';
 import { useTodo } from '../hooks/useTodos';
 import toast from 'react-hot-toast';
 
-interface TableComponentPropsTypes {
-  isLoading: boolean;
-  todos: Todo[];
-}
-
-const TableComponent = ({ todos, isLoading }: TableComponentPropsTypes) => {
+const TableComponent = () => {
   const navigate = useNavigate();
+  const { fetchTodos, todos, isLoading, total } = useTodo();
+  const { deleteTodo } = useTodo();
 
+  const [pagination, setPagination] = useState<MRT_PaginationState>({
+    pageIndex: 0,
+    pageSize: 5,
+  });
   const [open, setOpen] = useState<boolean>(false);
   const [openEdit, setOpenEdit] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isEdit, setIsEdit] = useState<Todo | null>(null);
-  const { deleteTodo } = useTodo();
+
+  useEffect(() => {
+    fetchTodos(pagination.pageIndex + 1, pagination.pageSize);
+  }, [pagination.pageIndex, pagination.pageSize]);
 
   const handleClose = () => {
     setOpen(false);
@@ -138,7 +146,10 @@ const TableComponent = ({ todos, isLoading }: TableComponentPropsTypes) => {
           enableColumnFilters={false}
           enableSorting={false}
           rowNumberDisplayMode="static"
-          state={{ isLoading }}
+          state={{ isLoading, pagination }}
+          manualPagination={true}
+          rowCount={total}
+          onPaginationChange={setPagination}
         />
       </Box>
       <DynamicModel
