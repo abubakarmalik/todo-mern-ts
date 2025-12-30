@@ -16,7 +16,26 @@ export const getAllUsers = async (
     const page = req.query.page ? Number(req.query.page) : undefined;
     const limit = req.query.limit ? Number(req.query.limit) : undefined;
 
-    const users = await getAllUsersService(page, limit);
+    let filters: Record<string, string> | undefined = undefined;
+    const tempFilters: Record<string, string> = {};
+
+    for (const key in req.query) {
+      if (key === 'page' || key === 'limit') {
+        continue;
+      }
+
+      const value = req.query[key];
+
+      if (value !== undefined && value !== null) {
+        tempFilters[key] = String(value);
+      }
+    }
+
+    if (Object.keys(tempFilters).length > 0) {
+      filters = tempFilters;
+    }
+
+    const users = await getAllUsersService(page, limit, filters);
 
     res.status(200).json({
       success: true,

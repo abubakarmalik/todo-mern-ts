@@ -10,6 +10,7 @@ interface TodosContextValue {
   fetchTodos: (
     page?: number,
     limit?: number,
+    filters?: Record<string, any>,
   ) => Promise<ApiResult<Paginated<Todo> | Todo[]>>;
   createTodo: (payload: CreateTodoDto) => Promise<ApiResult<Todo>>;
   updateTodo: (id: string, payload: UpdateTodoDto) => Promise<ApiResult<Todo>>;
@@ -25,10 +26,16 @@ export const TodosProvider: React.FC<React.PropsWithChildren<unknown>> = ({
   const [total, setTotal] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const fetchTodos = async (page?: number, limit?: number) => {
+  const fetchTodos = async (
+    page?: number,
+    limit?: number,
+    filters?: Record<string, any>,
+  ) => {
     setIsLoading(true);
     try {
-      const res = await todoService.getAllTodos(page, limit);
+      const res = filters
+        ? await todoService.getAllTodosFiltered(page, limit, filters)
+        : await todoService.getAllTodos(page, limit);
       if ((res.data as any).items) {
         setTodos((res.data as any).items);
         setTotal((res.data as any).total);

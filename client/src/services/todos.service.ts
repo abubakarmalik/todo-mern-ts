@@ -12,6 +12,19 @@ export const todoService = {
     return unwrap(data);
   },
 
+  getAllTodosFiltered: async (
+    page?: number,
+    limit?: number,
+    filters?: Record<string, any>,
+  ) => {
+    const params = { page, limit, ...(filters ?? {}) };
+    const { data } = await http.get<ApiResponse<Paginated<Todo> | Todo[]>>(
+      '/users',
+      { params },
+    );
+    return unwrap(data);
+  },
+
   getTodoById: async (id: string) => {
     const { data } = await http.get<ApiResponse<Todo>>(`/users/${id}`);
     return unwrap(data);
