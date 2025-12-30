@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   MaterialReactTable,
   type MRT_ColumnDef,
+  type MRT_ColumnFiltersState,
   type MRT_PaginationState,
 } from 'material-react-table';
 import { Box, IconButton, Tooltip } from '@mui/material';
@@ -13,22 +14,38 @@ import { useNavigate } from 'react-router-dom';
 import DynamicModel from './DynamicModel';
 import { useTodo } from '../hooks/useTodos';
 import toast from 'react-hot-toast';
+import debounce from 'debounce';
 
 const TableComponent = () => {
   const navigate = useNavigate();
   const { fetchTodos, deleteTodo, todos, isLoading, total } = useTodo();
-
-  const [pagination, setPagination] = useState<MRT_PaginationState>({
-    pageIndex: 0,
-    pageSize: 5,
-  });
   const [open, setOpen] = useState<boolean>(false);
   const [openEdit, setOpenEdit] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isEdit, setIsEdit] = useState<Todo | null>(null);
+  const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
+    [],
+  );
+  const [pagination, setPagination] = useState<MRT_PaginationState>({
+    pageIndex: 0,
+    pageSize: 5,
+  });
+
+  const debounceFetchTodos = useMemo(
+    () =>
+      debounce((pageIndex: number, pageSize: number) => {
+        fetchTodos(pageIndex + 1, pageSize);
+      }, 300),
+    [fetchTodos],
+  );
 
   useEffect(() => {
-    fetchTodos(pagination.pageIndex + 1, pagination.pageSize);
+    debounceFetchTodos(pagination.pageIndex, pagination.pageSize);
+    return () => {
+      if (debounceFetchTodos.isPending) {
+        debounceFetchTodos.clear();
+      }
+    };
   }, [pagination.pageIndex, pagination.pageSize]);
 
   const handleClose = () => {
@@ -60,7 +77,10 @@ const TableComponent = () => {
       setOpen(false);
     }
   };
-
+  const getDate = (date: string) => {
+    const timestamp = new Date(date);
+    return `${timestamp.toLocaleString()}`;
+  };
   const columns = useMemo<MRT_ColumnDef<Todo>[]>(
     () => [
       {
@@ -76,6 +96,11 @@ const TableComponent = () => {
       {
         accessorKey: 'age',
         header: 'Age',
+        size: 100,
+      },
+      {
+        accessorFn: (row) => getDate(row.createdAt || ''),
+        header: 'Created',
         size: 100,
       },
       {

@@ -8,14 +8,6 @@
     "updatedAt": "2025-12-29T12:52:16.197Z"
   },
   {
-    "id": "f74f917f-fb9c-4269-8ccb-b83e0d9ef5b9",
-    "name": "Abubakar Sadeeq Abubakar ",
-    "email": "abubakar@test.com",
-    "age": 33,
-    "createdAt": "2025-12-29T13:10:27.068Z",
-    "updatedAt": "2025-12-29T13:10:53.312Z"
-  },
-  {
     "id": "a6d3bc72-dcb0-4b6e-99d9-c139867a7ab3",
     "name": "name",
     "email": "ali@test",
@@ -94,14 +86,6 @@
     "age": 88,
     "createdAt": "2025-12-29T17:11:24.185Z",
     "updatedAt": "2025-12-29T17:11:24.185Z"
-  },
-  {
-    "id": "3b0f813e-a6db-4ecd-a34c-f50e1f415426",
-    "name": "Coffee updated",
-    "email": "abubakr@test.mj",
-    "age": 100,
-    "createdAt": "2025-12-29T17:15:09.043Z",
-    "updatedAt": "2025-12-29T17:16:07.462Z"
   },
   {
     "id": "fdb32bd5-7676-4234-84ce-8c82d3b10445",

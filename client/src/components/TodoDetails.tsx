@@ -84,6 +84,17 @@ export default function TodoDetails() {
             Age: {todo?.age}
           </Typography>
         </CardContent>
+        <Typography
+          variant="subtitle1"
+          component="p"
+          sx={{
+            color: 'text.secondary',
+            fontSize: { xs: '8px', sm: '10px', md: '12px', lg: '14px' },
+            p: 2,
+          }}
+        >
+          {todo?.createdAt}
+        </Typography>
       </Box>
       <CardMedia
         component="img"
