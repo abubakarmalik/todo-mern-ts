@@ -4,14 +4,18 @@ import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './theme';
 import { TodosProvider } from './context/todosContext';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Toaster />
-      <TodosProvider>
-        <RouterProvider router={router} />
-      </TodosProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <TodosProvider>
+          <RouterProvider router={router} />
+        </TodosProvider>
+      </LocalizationProvider>
     </ThemeProvider>
   );
 }

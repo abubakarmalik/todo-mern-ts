@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   MaterialReactTable,
   type MRT_ColumnDef,
-  type MRT_ColumnFiltersState,
   type MRT_PaginationState,
+  type MRT_ColumnFiltersState,
 } from 'material-react-table';
 import { Box, IconButton, Tooltip } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -33,20 +33,51 @@ const TableComponent = () => {
 
   const debounceFetchTodos = useMemo(
     () =>
-      debounce((pageIndex: number, pageSize: number) => {
-        fetchTodos(pageIndex + 1, pageSize);
-      }, 300),
+      debounce(
+        (
+          pageIndex: number,
+          pageSize: number,
+          filters?: {
+            id: string;
+            value: any;
+          }[],
+        ) => {
+          const filter: Record<string, any> = {};
+
+          filters?.forEach((ColFilter) => {
+            if (!ColFilter?.id || ColFilter.value == null) return;
+
+            if (ColFilter.value instanceof Date) {
+              filter[ColFilter.id] = new Date(ColFilter.value).toISOString();
+              return;
+            }
+
+            filter[ColFilter.id] = String(ColFilter.value);
+          });
+
+          fetchTodos(
+            pageIndex + 1,
+            pageSize,
+            Object.keys(filter).length ? filter : undefined,
+          );
+        },
+        500,
+      ),
     [fetchTodos],
   );
 
   useEffect(() => {
-    debounceFetchTodos(pagination.pageIndex, pagination.pageSize);
+    debounceFetchTodos(
+      pagination.pageIndex,
+      pagination.pageSize,
+      columnFilters,
+    );
     return () => {
       if (debounceFetchTodos.isPending) {
         debounceFetchTodos.clear();
       }
     };
-  }, [pagination.pageIndex, pagination.pageSize]);
+  }, [pagination, columnFilters]);
 
   const handleClose = () => {
     setOpen(false);
@@ -77,10 +108,7 @@ const TableComponent = () => {
       setOpen(false);
     }
   };
-  const getDate = (date: string) => {
-    const timestamp = new Date(date);
-    return `${timestamp.toLocaleString()}`;
-  };
+
   const columns = useMemo<MRT_ColumnDef<Todo>[]>(
     () => [
       {
@@ -99,9 +127,12 @@ const TableComponent = () => {
         size: 100,
       },
       {
-        accessorFn: (row) => getDate(row.createdAt || ''),
+        accessorFn: (row) => new Date(row.createdAt || ''),
+        id: 'createdAt',
         header: 'Created',
-        size: 100,
+        filterVariant: 'date',
+        size: 80,
+        Cell: ({ cell }) => cell.getValue<Date>().toLocaleString(),
       },
       {
         id: 'view',
@@ -167,13 +198,15 @@ const TableComponent = () => {
           columns={columns}
           data={isLoading ? [] : todos}
           enableRowNumbers
-          enableColumnFilters={false}
+          enableColumnFilters
           enableSorting={false}
           rowNumberDisplayMode="static"
           state={{ isLoading, pagination }}
           manualPagination={true}
           rowCount={total}
           onPaginationChange={setPagination}
+          manualFiltering
+          onColumnFiltersChange={setColumnFilters}
         />
       </Box>
       <DynamicModel
